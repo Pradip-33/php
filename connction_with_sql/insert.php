@@ -19,12 +19,12 @@ $tb = "stud_tb";
         echo $sql;
         if(mysqli_query($con,$sql))
         {
-            echo "Inserted... 😄";
+            echo "Inserted... ";
             
         }
         else
         {
-            echo "Not Inserted 😵";
+            echo "Not Inserted ";
         }
     }
 ?>
