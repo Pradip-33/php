@@ -44,7 +44,7 @@ $res = mysqli_query($con,$sql)
             <td><?php echo $a['Email']?></td>
             <td><?php echo $a['Course']?></td>
             <td><?php echo $a['Phone']?></td>
-            <td>Delete</td>
+            <td><input  class="btn btn-primary btn-lg" type="Delete" name="Delete" value="Delete" /></td>
         </tr>
   
     <?php }?>
