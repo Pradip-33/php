@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collage Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+
+  </head>
 <body>
     <form action="insert.php" method="post"> 
     <section class="vh-100 gradient-custom">
@@ -40,8 +41,8 @@
                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div  class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" name="Birthday" id="birthdayDate"  />
-                    <label for="birthdayDate" class="form-label">Birthday</label>
+                    <input type="text" class="form-control form-control-lg" name="Age" id="Age"  />
+                    <label for="Age" class="form-label">Age</label>
                   </div>
 
                 </div>
