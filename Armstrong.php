@@ -1,11 +1,11 @@
 <?php
-$a=407;
+$a=1634;
 $total=0;
 $b=$a;
 while($b!=0)
 {
     $rem=$b%10;
-    $total=$total+$rem*$rem*$rem;
+    $total=$total+($rem*$rem*$rem);
     $b=$b/10;
 }
 if($a=$total)
