@@ -12,7 +12,7 @@ $tb = "stud_tb";
         $Course = $_POST['course'];
         $con = mysqli_connect("localhost","root","",$db);
         if(!$con) die ("Connection Error");
-        $sql = "INSERT INTO $tb values('$F_name','$L_name','$age','$Gender','$email','$Course','$phone')";
+        $sql = "INSERT INTO $tb values(NULL,'$F_name','$L_name','$age','$Gender','$email','$Course','$phone')";
         echo $sql;
         if(mysqli_query($con,$sql))
         {

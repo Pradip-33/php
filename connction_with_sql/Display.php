@@ -8,6 +8,9 @@
 
 </head>
 <body>
+  <div class="Container">
+    <button class="btn btn-primary my-5"><a href="clg_mangement.php" class="text-light">Add User</a></button>
+  </div>
 <?php
 $db = "PHPcon";
 $tb = "stud_tb";
@@ -36,7 +39,7 @@ $res = mysqli_query($con,$sql)
     <?php
     while($a = mysqli_fetch_assoc($res)) {?>
         <tr>
-            <td></td>
+            <td><?php echo $a['ID']?></td>
             <td><?php echo $a['First_Name']?></td>
             <td><?php echo $a['Last_Name']?></td>
             <td><?php echo $a['Age']?></td>
@@ -44,10 +47,14 @@ $res = mysqli_query($con,$sql)
             <td><?php echo $a['Email']?></td>
             <td><?php echo $a['Course']?></td>
             <td><?php echo $a['Phone']?></td>
-            <td><input  class="btn btn-primary btn-lg" type="Delete" name="Delete" value="Delete" /></td>
-        </tr>
+            
+            <td><a href="Update.php" class="btn btn-primary " class="text-light">Update</a></td>
+          
+            <td><a href="delete.php?id=<?php echo $a['ID']?>" class="btn btn-danger"  class="text-light">Delete</a></td>
+        </tr> 
   
-    <?php }?>
+    <?php }
+    ?>
   </tbody>
 </table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
