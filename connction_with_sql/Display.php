@@ -48,9 +48,7 @@ $res = mysqli_query($con,$sql)
             <td><?php echo $a['Course']?></td>
             <td><?php echo $a['Phone']?></td>
             
-            <td><a href="Update.php" class="btn btn-primary " class="text-light">Update</a></td>
-          
-            <td><a href="delete.php?id=<?php echo $a['ID']?>" class="btn btn-danger"  class="text-light">Delete</a></td>
+            <td><a href="clg_mangement.php?id=<?php echo $a['ID']?>" class="btn btn-primary " class="text-light">Update</a><a href="delete.php?id=<?php echo $a['ID']?>" class="btn btn-danger"  class="text-light">Delete</a></td>
         </tr> 
   
     <?php }

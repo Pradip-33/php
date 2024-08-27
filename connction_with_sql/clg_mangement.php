@@ -8,21 +8,36 @@
 
   </head>
 <body>
-    <form action="insert.php" method="post"> 
+  <?php
+  if(isset($_GET['id'])){
+    $id= $_GET['id'];
+    $db= 'PHPcon';
+    $tb= 'stud_tb';
+    $con = mysqli_connect("localhost","root","",$db);
+    if(!$con) die("DB Connection Error");
+    echo $sql = "SELECT * FROM $tb where id=".$id;
+    $data = mysqli_query($con,$sql);
+    $a = mysqli_fetch_assoc($data);
+  }
+  ?>
+<form action="<?php echo isset($id)?'update.php':'insert.php';?>" method="post"> 
+
     <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" align="center">Registration Form</h3>
+            <div class="row">
+                <h2><a href="display.php" class="btn btn-primary">Display User</a></h2></div>
             <form>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
-
+                <input type="hidden" name="uid" value="<?php echo isset($id)?$id:'' ?>"> 
                   <div  class="form-outline">
-                    <input type="text" id="firstName" name="First_Name" class="form-control form-control-lg"  />
+                    <input type="text" id="firstName" name="First_Name" class="form-control form-control-lg"  value="<?php echo (isset($id))?$a['First_Name']:'';?>" />
                     <label class="form-label" for="firstName">First Name</label>
                   </div>
 
@@ -30,7 +45,7 @@
                 <div class="col-md-6 mb-4">
 
                   <div  class="form-outline">
-                    <input type="text" id="lastName" name="Last_Name" class="form-control form-control-lg"  />
+                    <input type="text" id="lastName" name="Last_Name" class="form-control form-control-lg"  value="<?php echo (isset($id))?$a['Last_Name']:'';?>" />
                     <label class="form-label" for="lastName">Last Name</label>
                   </div>
 
@@ -41,7 +56,7 @@
                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div  class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" name="Age" id="Age"  />
+                    <input type="text" class="form-control form-control-lg" name="Age" id="Age"  value="<?php echo (isset($id))?$a['Age']:'';?> "/>
                     <label for="Age" class="form-label">Age</label>
                   </div>
 
@@ -52,19 +67,19 @@
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="Male" checked />
+                      value="Male" <?php echo isset($id)&& $a['gender'] == 'male'?'checked':'';?>/>
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="Female" />
+                      value="Female" <?php echo isset($id)&& $a['gender'] == 'female'?'checked':'';?>/>
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="otherGender"
-                      value="Other" />
+                      value="Other" <?php echo isset($id)&& $a['gender'] == 'Other'?'checked':'';?> />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
 
@@ -75,7 +90,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div  class="form-outline">
-                    <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg"  />
+                    <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" value="<?php echo (isset($id))?$a['emailAddress']:'';?>" />
                     <label class="form-label" for="emailAddress">Email</label>
                   </div>
 
@@ -83,7 +98,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div  class="form-outline">
-                    <input type="tel" id="phoneNumber" name="Phone_Number" class="form-control form-control-lg"   />
+                    <input type="tel" id="phoneNumber" name="Phone_Number" class="form-control form-control-lg" value="<?php echo (isset($id))?$a['Phone_Number']:'';?>"  />
                     <label class="form-label" for="phoneNumber">Phone Number</label>
                   </div>
 
@@ -93,7 +108,7 @@
               <div class="row">
                 <div class="col-12">
 
-                  <select name="course" class="select form-control-lg" >
+                  <select name="course" class="select form-control-lg" value="<?php echo (isset($id))?$a['course']:'';?>"  >
                     <option value="1">Choose option</option>
                     <option value="Full Stack">Full Stack</option>
                     <option value="Web Design">Web Design</option>
@@ -105,13 +120,22 @@
                     <option value="Backend Devlopment">Backend Devlopment</option>
                   </select>
                   
+                  
 
                 </div>
               </div>
+              <div class="mt-4 pt-2">
+              <input  type="checkbox" id="checkbox1" name="checkbox1" value="t&c" />
+                  <lable for="checkbox1">I Agree with all terms and conditions</lable> <br>
+                  <input  type="checkbox" id="checkbox2" name="checkbox2" value="t&c_" />
+                  <lable for="checkbox2">I Not Agree with all terms and conditions</lable>
+              </div>
 
               <div class="mt-4 pt-2">
-                <input  class="btn btn-primary btn-lg" type="submit" name="Submit" value="Submit" />
+               
+                <input  class="btn btn-primary btn-lg" type="submit" name="Submit" value="<?php echo isset($id)?'Update':'Submit  ';?>" />
                 <input  class="btn btn-primary btn-lg" type="Reset" name="Cancle" value="Cancle" />
+                
               </div>
 
             </form>

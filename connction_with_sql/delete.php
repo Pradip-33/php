@@ -1,19 +1,21 @@
 <?php
-if(isset($_GET["id"])){
+$db = "PHPcon";
+$tb = "stud_tb";
+if(isset($_GET['id'])){
     $con = mysqli_connect("localhost","root","",$db);
-if(!$con) die ("Connection Error");
+    if(!$con) die("DB Connection Error");
     $id = $_GET["id"];
-   $sql = "DELETE FROM stud_tb WHERE id = ".$id;
-   if(mysqli_query($con,$sql))
-        {
-            
-            header('Location:Display.php');
-        }
-        else
-        {
-            echo "Not Deleted ";
-        }
-}else{
-    echo "ID Not Found";
+    $sql = "DELETE FROM $tbl where id = ".$id;
+    if(mysqli_query($con,$sql)){
+        echo "Deleted successfully...";
+  
+        header('Location:display.php');
+    } else {
+        echo "Error in Deletion";
+    }
+
+} else {
+    echo "Id not found...";
 }
+
 ?>
