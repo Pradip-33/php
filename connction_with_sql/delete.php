@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
     $con = mysqli_connect("localhost","root","",$db);
     if(!$con) die("DB Connection Error");
     $id = $_GET["id"];
-    $sql = "DELETE FROM $tbl where id = ".$id;
+    $sql = "DELETE FROM $tb where id = ".$id;
     if(mysqli_query($con,$sql)){
         echo "Deleted successfully...";
   

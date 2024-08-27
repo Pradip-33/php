@@ -17,7 +17,7 @@ $tb = "stud_tb";
         if(mysqli_query($con,$sql)){
             echo "Updated successfully...";
             // echo "<script></script>";
-    
+            header('Location:display.php');
         } else {
             echo "Error in Update operation";
         }
