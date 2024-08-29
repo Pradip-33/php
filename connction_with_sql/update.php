@@ -10,6 +10,7 @@ $tb = "stud_tb";
         $email =  $_POST['emailAddress'];
         $phone = $_POST['Phone_Number'];
         $Course = $_POST['course'];
+        $qual = json_encode($_POST['qual']);
         $con = mysqli_connect("localhost","root","",$db);
         if(!$con) die("DB Connection Error");
          $sql = "UPDATE $tb SET First_Name='$F_name',Last_Name='$L_name',Age='$age',gender='$Gender',Email='$email',Course='$Course',Phone='$phone' WHERE id= ".$id;

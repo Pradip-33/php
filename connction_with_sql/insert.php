@@ -10,10 +10,11 @@ $tb = "stud_tb";
         $email =  $_POST['emailAddress'];
         $phone = $_POST['Phone_Number'];
         $Course = $_POST['course'];
+        $qual = json_encode($_POST['qual']);
         $con = mysqli_connect("localhost","root","",$db);
         if(!$con) die ("Connection Error");
-        $sql = "INSERT INTO $tb values(NULL,'$F_name','$L_name','$age','$Gender','$email','$Course','$phone')";
-        echo $sql;
+        echo $sql = "INSERT INTO $tb values(NULL,'$F_name','$L_name','$age','$Gender','$email','$Course','$phone','$qual')";
+        
         if(mysqli_query($con,$sql))
         {
             echo "Inserted... ";

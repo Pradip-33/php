@@ -18,6 +18,7 @@
     echo $sql = "SELECT * FROM $tb where id=".$id;
     $data = mysqli_query($con,$sql);
     $a = mysqli_fetch_assoc($data);
+    $qual = json_decode($_POST['qual']);
   }
   ?>
 <form action="<?php echo isset($id)?'update.php':'insert.php';?>" method="post"> 
@@ -67,19 +68,19 @@
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="Male" <?php echo isset($id)&& $a['gender'] == 'male'?'checked':'';?>/>
+                      value="Male" <?php echo isset($id)&& $a['male'] == 'male'?'checked':'';?>/>
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="Female" <?php echo isset($id)&& $a['gender'] == 'female'?'checked':'';?>/>
+                      value="Female" <?php echo isset($id)&& $a['female'] == 'female'?'checked':'';?>/>
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="otherGender"
-                      value="Other" <?php echo isset($id)&& $a['gender'] == 'Other'?'checked':'';?> />
+                      value="Other" <?php echo isset($id)&& $a['Other'] == 'Other'?'checked':'';?> />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
 
@@ -109,7 +110,7 @@
                 <div class="col-12">
 
                   <select name="course" class="select form-control-lg" value="<?php echo (isset($id))?$a['course']:'';?>"  >
-                    <option value="1">Choose option</option>
+                    <option value="1">Choose Subject</option>
                     <option value="Full Stack">Full Stack</option>
                     <option value="Web Design">Web Design</option>
                     <option value="Network and Security">Network and Security</option>
@@ -125,10 +126,11 @@
                 </div>
               </div>
               <div class="mt-4 pt-2">
-              <input  type="checkbox" id="checkbox1" name="checkbox1" value="t&c" />
-                  <lable for="checkbox1">I Agree with all terms and conditions</lable> <br>
-                  <input  type="checkbox" id="checkbox2" name="checkbox2" value="t&c_" />
-                  <lable for="checkbox2">I Not Agree with all terms and conditions</lable>
+                <label>Qualifucation</label>
+              <input  type="checkbox" id="checkbox1" name="qual[]" value="10th" />
+                  <lable for="checkbox1">10th</lable>
+                  <input  type="checkbox" id="checkbox2" name="qual[]" value="12th" />
+                  <lable for="checkbox2">12th</lable>
               </div>
 
               <div class="mt-4 pt-2">

@@ -31,6 +31,7 @@ $res = mysqli_query($con,$sql)
       <th scope="col">Email</th>
       <th scope="col">Course</th>
       <th scope="col">Phone</th>
+      <th scope="col">Qualification</th>
       <th scope="col">Action</th>
 
     </tr>
@@ -47,7 +48,7 @@ $res = mysqli_query($con,$sql)
             <td><?php echo $a['Email']?></td>
             <td><?php echo $a['Course']?></td>
             <td><?php echo $a['Phone']?></td>
-            
+            <td><?php echo $a['Qualification']?></td>
             <td><a href="clg_mangement.php?id=<?php echo $a['ID']?>" class="btn btn-primary " class="text-light">Update</a><a href="delete.php?id=<?php echo $a['ID']?>" class="btn btn-danger"  class="text-light">Delete</a></td>
         </tr> 
   
