@@ -7,7 +7,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     "Accept: application/json",
     "api-token:CeONZ6ypWERXb_1agFS58OL6uEUtVsw8dOSgXzwFDzFUuxSTITtT6b8T7wJvkVVhmrc", 
-    "user-email: Pfsuthar33@gmail.com"     
+    "user-email: pfsuthar33@gmail.com"     
 ));
 
 $response = curl_exec($ch);
